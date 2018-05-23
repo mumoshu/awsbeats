@@ -110,7 +110,12 @@ config:
     partition_key: mykey
 EOS
 
-helm upgrade --install filebeat ~/charts/stable/filebeat \
+git clone git@github.com:mumoshu/charts.git charts
+pushd charts
+git checkout filebeat-plugins
+popd
+
+helm upgrade --install filebeat ./charts/stable/filebeat \
   -f values.yaml \
   --set rbac.enabled=true
 ```
