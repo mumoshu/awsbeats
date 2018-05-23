@@ -33,7 +33,10 @@ output.firehose:
 output.streams:
   region: eu-central-1
   stream_name: test1 # Your stream name
+  partition_key: mykey # In case your beat event is {"foo":1,"mykey":"bar"}, not "mykey" but "bar" is used as the partition key
 ```
+See the example [filebeat.yaml](https://github.com/kube-aws/awsbeats/blob/master/example/streams/filebeat.yml) for more details.
+
 - Run filebeat with plugin `./filebeat-v6.1.3-go1.10rc1-linux-amd64 -plugin kinesis.so-0.0.3-v6.1.3-go1.10rc1-linux-amd64`
 
 ## AWS authentication
