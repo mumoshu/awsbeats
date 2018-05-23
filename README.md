@@ -10,7 +10,10 @@ __NOTE: Filebeat and plugin should be built using the same Golang version.__
 
 ## Quick start
 
+Either:
+
 - Download binary files from https://github.com/s12v/awsbeats/releases
+- Pull docker images from [`kubeaws/awsbeats`](https://hub.docker.com/r/kubeaws/awsbeats/)
 
 ### Firehose
 
