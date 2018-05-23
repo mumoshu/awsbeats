@@ -3,6 +3,8 @@ language: go
 go:
   - "1.10"
 
+go_import_path: /home/travis/gopath/src/github.com/s12v/awsbeats
+
 install:
   - go get github.com/elastic/beats || true
   - curl https://glide.sh/get | sh
