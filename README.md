@@ -86,6 +86,35 @@ Emit some line-delimited json log messages:
 hack/emit-ndjson-logs
 ```
 
+## Running on a Kubernetes cluster
+
+Use the helm chart:
+
+```
+cat << EOS > values.yaml
+image:
+  repository: kubeaws/awsbeats
+  tag: canary
+  pullPolicy: Always
+
+plugins:
+  - kinesis.so
+
+config:
+  output.file:
+    enabled: false
+  output.streams:
+    enabled: true
+    region: ap-northeast-1
+    stream_name: test1
+    partition_key: mykey
+EOS
+
+helm upgrade --install filebeat ~/charts/stable/filebeat \
+  -f values.yaml \
+  --set rbac.enabled=true
+```
+
 ## Output buffering
 
 TODO
